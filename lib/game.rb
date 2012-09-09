@@ -10,7 +10,7 @@ class Game
 		@name = params[:name] || 'Game'
 		@players = params[:players] || [Player.new()]
 		@rules = params[:rules] || []
-  		@board = params[:board] || Board.new(10,10)
+  		@board = params[:board] || Board.new(:shape => :square, :dimensions => [10,10])
   	end	
 
 end
