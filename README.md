@@ -1,7 +1,7 @@
 Wouldn't you prefer a good game of chess?
 ---
 
-## The Game of Chess
+# The Game of Chess
 First we'll need to review the [Rule of Chess](http://en.wikipedia.org/wiki/Rules_of_chess).
 
 ## Our choice of notation
@@ -9,7 +9,7 @@ We'll use [Descriptive Notation](http://en.wikipedia.org/wiki/Descriptive_chess_
 for fun and because they use it in the chess game between HAL and Poole in 2001: A Space Odyssey. 
 Descriptive Notation is an obsolete notation that uses a relative rather than absolute coordinate system 
 whereby a position on the board is given by its rank, ranging from 1 to 8 starting on the moving player's 
-side of the board, and its file, given by the name of the piece that occupies rank 1 at the start of the game.
+side of the board, and its file, given by the name of the piece that occupies rank 1 at the start of the game prefixed by either King's or Queen's depending if the piece is Kingside or Queenside.
 
 ## The cast of characters
 King (K), Queen (Q), Rook (R), Bishop (B), Knight (N), and Pawn (P)
@@ -58,6 +58,47 @@ All pieces may move to any position allowed by the dance card if and only if
 * it is within the extent of the board
 * no other piece blocks the path, unless the piece in motion is a Knight
 * movement away from the piece's current position on the board does not place the King in check
+* removes the King from check if the King is in check
+
+## Special dance moves
+### Castling
+TBD
+### En passant
+TBD
+### Pawn promotion
+TBD
+
+## Game States
+
+### Start
+Both sides start out as follows (Piece-FileRank):
+<pre>
+R-QR1
+N-QN1
+B-QB1
+Q-Q1
+K-K1
+B-KB1
+N-KN1
+R-KR1
+P-QR2
+P-QN2
+P-QB2
+P-Q2
+P-K2
+P-KB2
+P-KN2
+P-KR2
+</pre>
+
+### King in check
+A King is in check when an opponent's piece threatens to capture the King on the next move.
+
+### King in checkmate
+A King is in checkmate when there is no way to remove the King from check. The game is over.
+
+### Draw
+A draw is called if the King is not in check and there is no valid move that can be made.
 
 
 
