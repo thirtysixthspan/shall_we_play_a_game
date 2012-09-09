@@ -101,6 +101,29 @@ A King is in checkmate when there is no way to remove the King from check. The g
 A draw is called if the King is not in check and there is no valid move that can be made.
 
 
+# Implementing the Game
+
+## Pieces
+The basic elements in the game. Each piece has a role which constrains the way in which the piece may be moved.
+
+## Board
+The set of Pieces and the game space.
+
+## Players
+The actors playing the Game in competition against each other. 
+
+## Rules
+The set of constraints that govern the Players and the Board.
+
+## Game
+The Players
+The Rules
+The Board
+
+
+
+
+
 
 
 
