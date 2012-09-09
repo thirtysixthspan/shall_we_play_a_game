@@ -6,8 +6,8 @@ class Chess < Game
 		board = Board.new(:shape => :square,
 			              :dimensions => [8, 8])
 		players = []
-		players << Player.new()
-		players << Player.new()
+		players << Player.new(:name => 'Jane Doe', :color => :white)
+		players << Player.new(:name => 'John Doe', :color => :black)
 		rules = []
   		super(:name => 'Chess', 
   			  :players => players, 
