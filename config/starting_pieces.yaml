@@ -1,0 +1,64 @@
+-
+  :role: :knight
+  :position: 'QN1'
+  :name: 'N'
+-
+  :role: :knight
+  :position: 'KN1'
+  :name: 'N'
+-
+  :role: :bishop
+  :position: 'QB1'
+  :name: 'B'
+-
+  :role: :bishop
+  :position: 'KB1'
+  :name: 'B'
+-
+  :role: :rook
+  :position: 'QR1'
+  :name: 'R'
+-
+  :role: :rook
+  :position: 'KR1'
+  :name: 'R'
+-
+  :role: :queen
+  :position: 'Q1'
+  :name: 'Q'
+-
+  :role: :king
+  :position: 'K1'
+  :name: 'K'
+-
+  :role: :pawn
+  :position: 'QN2'
+  :name: 'P'
+-
+  :role: :pawn
+  :position: 'KN2'
+  :name: 'P'
+-
+  :role: :pawn
+  :position: 'QB2'
+  :name: 'P'
+-
+  :role: :pawn
+  :position: 'KB2'
+  :name: 'P'
+-
+  :role: :pawn
+  :position: 'QR2'
+  :name: 'P'
+-
+  :role: :pawn
+  :position: 'KR2'
+  :name: 'P'
+-
+  :role: :pawn
+  :position: 'Q2'
+  :name: 'P'
+-
+  :role: :pawn
+  :position: 'K2'
+  :name: 'P'

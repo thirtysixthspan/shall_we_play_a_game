@@ -1,3 +1,5 @@
+require './lib/piece.rb'
+
 class Player
 
   attr_accessor :name, :color, :pieces
