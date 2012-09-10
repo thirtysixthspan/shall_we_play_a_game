@@ -40,6 +40,10 @@ describe Chess do
 			@chess.players.second.pieces.size == 16
 		end
 
+		it "should have pieces that can each move" do
+			@chess.pieces.map{|p| p.moves.size > 0 }.inject(:&).should == true 
+		end
+
 	end
 
 end
