@@ -6,8 +6,11 @@ class Chess < Game
 	def starting_pieces(params={})
  		color = params[:color] || :white
  		pieces = []
+ 		moves = YAML.load(File.open("./config/chess_moves.yaml", "r"))
  		YAML.load(File.open("./config/starting_pieces.yaml", "r")).each do |p|
-   			pieces << Piece.new( p.merge(:color => color) )	
+ 			p.merge!(:color => color)
+ 			p.merge!(:moves => moves[p[:role]])
+   			pieces << Piece.new(p) 	
    		end	
    		pieces
 	end

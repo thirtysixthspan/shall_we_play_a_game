@@ -24,15 +24,24 @@ describe Piece do
 			@piece.name.should == nil
 		end	
 
+		it "should have no moves" do
+			@piece.moves.should == []
+		end	
 	end
 
 	context "when configured" do
 
 		before :all do
+			moves = [ [+1,+2,3], [+2,+1,3],
+					  [-1,+2,3], [-2,+1,3],
+					  [+1,-2,3], [+2,-1,3],
+					  [-1,-2,3], [-2,-1,3] ]
+
 			@piece = Piece.new( :name => 'N',
 								:role => :knight,
 								:color => :black,
-								:position => 'QN1')
+								:position => 'QN1',
+								:moves => moves)
 		end
 
 		it "should have a position" do
@@ -51,6 +60,14 @@ describe Piece do
 		it "should have a name of N" do
 			@piece.name.should == 'N'
 		end			
+
+		it "should have 8 moves" do
+			@piece.moves.size.should == 8
+		end
+
+		it "should have moves that are triples" do
+			@piece.moves.map{|m| m.size == 3}.inject(:&).should == true
+		end
 
 	end
 
