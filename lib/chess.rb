@@ -1,4 +1,6 @@
 require './lib/game.rb'
+require './lib/chess_board.rb'
+
 require 'yaml'
 
 class Chess < Game
@@ -16,14 +18,14 @@ class Chess < Game
 	end
 
 	def initialize()
-		board = Board.new(:shape => :square,
-			              :dimensions => [8, 8])
 		white = Player.new(:name => 'Jane Doe', :color => :white)
 		black = Player.new(:name => 'John Doe', :color => :black)
 		players = [white, black]
 
 		white.pieces = starting_pieces(:color => :white)
 		black.pieces = starting_pieces(:color => :black)
+
+		board = ChessBoard.new(:pieces => white.pieces + black.pieces)
 
 		rules = []
   		super(:name => 'Chess', 

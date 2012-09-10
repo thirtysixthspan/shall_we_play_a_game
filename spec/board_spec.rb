@@ -25,9 +25,12 @@ describe Board do
 
     context "when configured" do
 
-		before :all do
+		before :each do
+			pieces = []
+			3.times { pieces << double(:kind_of => Piece) }
 			@board = Board.new(:shape => :rectangle,
-							   :dimensions => [5,10])
+							   :dimensions => [5,10],
+							   :pieces => pieces)
 		end
 
 		it "should have a shape of rectangle" do
@@ -41,6 +44,10 @@ describe Board do
 
 		it "should have 50 positions" do
 			@board.size.should == 50
+		end
+
+		it "should have 3 pieces" do
+			@board.pieces.size.should == 3
 		end
 
 	end
