@@ -7,6 +7,9 @@ require './lib/rule.rb'
 require './lib/game.rb'
 require './lib/chess.rb'
 
+require 'rspec'
+require 'rspec/mocks'
+
 RSpec.configure do |config|
 
 end
