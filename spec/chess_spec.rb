@@ -44,7 +44,44 @@ describe Chess do
 			@chess.pieces.map{|p| p.moves.size > 0 }.inject(:&).should == true 
 		end
 
+		it "it should be white's move" do
+			@chess.whos_move.should == @chess.white
+		end
+
+		it "should be able to query a valid move" do
+			pending "unimplemented"
+			@chess.allowed_move?('P-K3').should == true 
+		end
+
+		it "should be able to query an invalid pawn move" do
+			pending "unimplemented"
+			@chess.allowed_move?('P-K5').should == true 
+		end
+
 	end
+
+	context "making moves" do
+
+		before :each do
+			@chess = Chess.new()
+		end
+
+		it "should permit advancing a white pawn one space" do
+			@chess.move('P-K3').should == true 
+		end
+
+		it "players should take turns moving" do
+			@chess.move('P-K3')
+			@chess.whos_move.should == @chess.black 
+			@chess.move('P-K3')
+			@chess.whos_move.should == @chess.white 
+			@chess.move('P-Q4')
+			@chess.whos_move.should == @chess.black 
+			@chess.move('P-Q4')
+			@chess.whos_move.should == @chess.white 
+		end
+
+    end
 
 end
 

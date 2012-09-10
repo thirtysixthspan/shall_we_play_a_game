@@ -13,6 +13,10 @@ describe Game do
 			@game.players.size.should be >=1 
 		end
 
+		it "should have provide the player who's move it is" do
+			@game.whos_move.should be_a_kind_of Player
+		end
+
 		it "should have a board" do
 			@game.board.should be_a_kind_of Board
 		end

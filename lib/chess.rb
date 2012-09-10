@@ -5,6 +5,8 @@ require 'yaml'
 
 class Chess < Game
 
+	attr_accessor :white, :black
+
 	def starting_pieces(params={})
  		color = params[:color] || :white
  		pieces = []
@@ -18,9 +20,11 @@ class Chess < Game
 	end
 
 	def initialize()
-		white = Player.new(:name => 'Jane Doe', :color => :white)
-		black = Player.new(:name => 'John Doe', :color => :black)
-		players = [white, black]
+		@white = Player.new(:name => 'Jane Doe', :color => :white)
+		@black = Player.new(:name => 'John Doe', :color => :black)
+		players = [@white, @black]
+
+		@whos_move = @white
 
 		white.pieces = starting_pieces(:color => :white)
 		black.pieces = starting_pieces(:color => :black)
@@ -33,6 +37,20 @@ class Chess < Game
   			  :rules => rules, 
   			  :board => board)
 	end
+
+	def next_player()
+		if @whos_move == @white
+			@whos_move = @black
+		else
+			@whos_move = @white
+		end
+	end
+
+    def move(description)
+
+    	next_player
+    	true
+    end
 
 end
 
