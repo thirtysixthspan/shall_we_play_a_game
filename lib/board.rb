@@ -8,7 +8,8 @@ class Board
  	end
 
  	def size
- 		@dimensions[0] ** 2 if @shape == :square
+ 		return @dimensions[0] ** 2 if @shape == :square
+ 		return @dimensions.inject(:*) if @shape == :rectangle
  	end
 
 end
