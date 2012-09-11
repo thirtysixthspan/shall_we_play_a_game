@@ -30,7 +30,7 @@ describe Board do
 		end		
 
 		it "should by default have 12 edge pieces" do
-			@board.positions.select{|l,p| pp p.paths.size; p.paths.size == 5 }.size.should == 12
+			@board.positions.select{|l,p| p.paths.size == 5 }.size.should == 12
 		end		
 
 	end
