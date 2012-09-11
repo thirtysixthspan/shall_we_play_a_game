@@ -71,7 +71,7 @@ describe Piece do
 		end
 
 		it "should permit moving to position1 from position2" do
-			@piece.move_to?(@position1)	
+			@piece.move_to?(@position1,1)	
 		end
 
 	end
