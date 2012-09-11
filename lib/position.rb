@@ -10,7 +10,7 @@ class Position
 		paths.include?(vector)
 	end
 
-	def position_along(vector)
+	def along(vector)
 		@paths[vector]
 	end	
 
