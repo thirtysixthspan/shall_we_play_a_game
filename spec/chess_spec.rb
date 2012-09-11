@@ -27,6 +27,18 @@ describe Chess do
 			@chess.board.size.should be == 64
 		end
 
+		it "should by default have 36 middle pieces" do
+			@chess.board.positions.select{|l,p| p.paths.size == 8 }.size.should == 36
+		end		
+
+		it "should by default have 4 corner pieces" do
+			@chess.board.positions.select{|l,p| p.paths.size == 3 }.size.should == 4
+		end		
+
+		it "should by default have 24 edge pieces" do
+			@chess.board.positions.select{|l,p| pp p.paths.size; p.paths.size == 5 }.size.should == 24
+		end			
+
 		it "should have a set of rules" do
 			@chess.rules.should be_a_kind_of Array
 		end
@@ -60,7 +72,7 @@ describe Chess do
 
 	end
 
-	context "making moves" do
+	context "making opening moves" do
 
 		before :each do
 			@chess = Chess.new()

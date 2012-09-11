@@ -21,6 +21,18 @@ describe Board do
 			@board.size.should == 25
 		end
 
+		it "should by default have 9 middle pieces" do
+			@board.positions.select{|l,p| p.paths.size == 8 }.size.should == 9
+		end		
+
+		it "should by default have 4 corner pieces" do
+			@board.positions.select{|l,p| p.paths.size == 3 }.size.should == 4
+		end		
+
+		it "should by default have 12 edge pieces" do
+			@board.positions.select{|l,p| pp p.paths.size; p.paths.size == 5 }.size.should == 12
+		end		
+
 	end
 
     context "when configured" do
