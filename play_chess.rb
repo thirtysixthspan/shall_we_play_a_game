@@ -19,5 +19,5 @@ require './lib/chess.rb'
 # 16.Bxf3 Nxf3 
 
 Odyssey = Chess.new
-
+Odyssey.allowed_move?('P-K3')
 

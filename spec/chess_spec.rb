@@ -2,9 +2,66 @@ require './spec/spec_helper.rb'
 
 describe Chess do
 
+	context "parsing descriptive notation" do
+
+		before :each do
+			@chess = Chess.new()
+		end
+
+		it "should correctly report the role of a piece" do
+			role, position = @chess.parse('P-K4')
+			role.should == :pawn
+		end
+
+		it "should raise an exception when an invalid piece is provided in description" do
+			lambda {@chess.parse('T-K4')}.should raise_exception 
+		end
+
+		it "should raise an exception when an invalid piece is provided in capture description" do
+			lambda {@chess.parse('PxT')}.should raise_exception 
+		end
+
+		it "should raise an exception when an invalid location is provided in the description" do
+			lambda {@chess.parse('P-QQ1')}.should raise_exception 
+		end
+
+		it "should correctly report the position of a piece for white" do
+			@chess.whites_move
+			position = @chess.get_position(:white,'K4')
+			position.location.should == [3,4]
+		end
+
+		it "should correctly report the position of a piece for black" do
+			@chess.blacks_move
+			position = @chess.get_position(:black,'K4')
+			position.location.should == [4,4]
+		end
+
+		it "should correctly report the new position of a moving piece for white" do
+			@chess.whites_move
+			role, position = @chess.parse('P-K4')
+			position.location.should == [3,4]
+		end
+
+		it "should correctly report the new position of a moving piece for black" do
+			@chess.blacks_move
+			role, position = @chess.parse('P-K4')
+			position.location.should == [4,4]
+		end
+
+		it "should correctly handle captures" do
+			pending "unimplemented"			
+			@chess.whites_move
+			role, position, captured_piece = @chess.parse('PxP')
+			role.should == :pawn
+			captured_piece.should == :pawn
+		end
+
+	end
+
 	context "starting a new game" do
 
-		before :all do
+		before :each do
 			@chess = Chess.new()
 		end
 
@@ -36,7 +93,7 @@ describe Chess do
 		end		
 
 		it "should by default have 24 edge pieces" do
-			@chess.board.positions.select{|l,p| pp p.paths.size; p.paths.size == 5 }.size.should == 24
+			@chess.board.positions.select{|l,p| p.paths.size == 5 }.size.should == 24
 		end			
 
 		it "should have a set of rules" do
@@ -61,13 +118,11 @@ describe Chess do
 		end
 
 		it "should be able to query a valid move" do
-			pending "unimplemented"
 			@chess.allowed_move?('P-K3').should == true 
 		end
 
 		it "should be able to query an invalid pawn move" do
-			pending "unimplemented"
-			@chess.allowed_move?('P-K5').should == true 
+			@chess.allowed_move?('P-K5').should == false 
 		end
 
 	end
@@ -83,14 +138,12 @@ describe Chess do
 		end
 
 		it "players should take turns moving" do
-			@chess.move('P-K3')
-			@chess.whos_move.should == @chess.black 
-			@chess.move('P-K3')
-			@chess.whos_move.should == @chess.white 
-			@chess.move('P-Q4')
-			@chess.whos_move.should == @chess.black 
-			@chess.move('P-Q4')
-			@chess.whos_move.should == @chess.white 
+			@chess.move('P-K3').should == true
+			@chess.whites_move?.should == false 
+			@chess.blacks_move?.should == true
+			@chess.move('P-K3').should == true
+			@chess.whites_move?.should == true
+			@chess.blacks_move?.should == false 
 		end
 
     end
