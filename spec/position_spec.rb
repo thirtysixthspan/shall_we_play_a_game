@@ -41,6 +41,11 @@ describe Position do
 			@position1.path?([1,0]).should == true
 		end		
 
+		it "should give you a position along a path" do
+			@position1.connect([1,0],@position2)
+			@position1.position_along([1,0]).should == @position2
+		end		
+
 		it "should tell you if a path is not available" do
 			@position1.connect([1,0],@position2)
 			@position1.path?([0,1]).should == false

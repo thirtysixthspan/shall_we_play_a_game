@@ -10,6 +10,10 @@ class Position
 		paths.include?(vector)
 	end
 
+	def position_along(vector)
+		@paths[vector]
+	end	
+
 	def connect(vector, position)
 		@paths[vector] = position if position
 	end
