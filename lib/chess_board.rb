@@ -3,11 +3,11 @@ require './lib/board.rb'
 class ChessBoard < Board
 
  	def pieces_in_play
- 		@pieces.select{|p| p.position != 'C'}
+ 		@pieces.select{|p| p.position }
  	end
 
  	def pieces_captured
- 		@pieces.select{|p| p.position == 'C'}
+ 		@pieces.select{|p| !p.position}
  	end
 
  	def white_pieces_in_play
@@ -27,7 +27,7 @@ class ChessBoard < Board
  	end
 
  	def initialize(params={})		
- 		super( params.merge!(:shape => :square, :dimensions => [8]) )
+ 		super( params.merge(:shape => :square, :dimensions => [8]) )
  	end
 
 end

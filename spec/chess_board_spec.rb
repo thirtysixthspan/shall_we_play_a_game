@@ -28,8 +28,8 @@ describe ChessBoard do
 
 		before :each do
 			pieces = []
-			5.times { pieces << double(:kind_of => Piece, :position => 'C', :color => :white) }
-			12.times { pieces << double(:kind_of => Piece, :position => 'C', :color => :black) }
+			5.times { pieces << double(:kind_of => Piece, :position => nil, :color => :white) }
+			12.times { pieces << double(:kind_of => Piece, :position => nil, :color => :black) }
 			pieces << double(:kind_of => Piece, :position => 'QR1', :color => :white)
 			pieces << double(:kind_of => Piece, :position => 'QB5', :color => :white)
 			pieces << double(:kind_of => Piece, :position => 'Q1', :color => :white)
