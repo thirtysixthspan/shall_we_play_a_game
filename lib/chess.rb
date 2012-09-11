@@ -100,20 +100,6 @@ class Chess < Game
 
 	    end
 
-    	if description.match(/x/i)
-
-    		capture_role = @piece_roles[destination]
-    		raise 'unrecognized capture piece in description' unless capture_role
-
-    		moving_piece = threatens(:role => piece_role, :postion => destination_position)
-
-	    	destination_position = nil
-	    	captured_piece = nil
-
-	      	return [piece_role, destination_position, capture_role]	
-
-	    end  	
-
     end
 
     def occupation(position)

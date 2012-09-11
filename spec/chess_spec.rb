@@ -49,14 +49,6 @@ describe Chess do
 			position.location.should == [4,4]
 		end
 
-		it "should correctly handle captures" do
-			pending "unimplemented"			
-			@chess.whites_move
-			role, position, captured_piece = @chess.parse('PxP')
-			role.should == :pawn
-			captured_piece.should == :pawn
-		end
-
 	end
 
 	context "starting a new game" do
