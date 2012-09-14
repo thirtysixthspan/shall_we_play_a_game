@@ -18,6 +18,7 @@ describe Chess do
 		end
 
 		it "should raise an exception when an invalid piece is provided in capture description" do
+			pending("unimplemented")
 			lambda {@chess.parse('PxT')}.should raise_exception 
 		end
 

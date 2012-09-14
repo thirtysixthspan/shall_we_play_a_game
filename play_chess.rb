@@ -20,4 +20,5 @@ require './lib/chess.rb'
 
 Odyssey = Chess.new
 Odyssey.allowed_move?('P-K3')
+Odyssey.move('P-K3')
 

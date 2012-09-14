@@ -34,7 +34,8 @@ class Chess < Game
         moves.each { |role,ml| ml.each {|m| m[0]*=-1 } } if color == :black
  		YAML.load(File.open("./config/starting_pieces.yaml", "r")).each do |p|
  			p.merge!(:color => color)
- 			p.merge!(:moves => moves[p[:role]])
+ 			moves_list = moves[p[:role]].map{ |m| Move.new(:direction=>m[0..1],:occupation=>m[2]) }
+ 			p.merge!(:moves => moves_list)
  			p[:position] = get_position(color,p[:position])
    			pieces << Piece.new(p)
    		end	
@@ -116,28 +117,26 @@ class Chess < Game
     	state
     end
 
-	def valid_move?(params)
+    def candidate_moves(params)
     	role = params[:role]
     	position = params[:position]
 
-    	candidates = @board.pieces_in_play
-						   .select{|p| p.color == @whos_move.color}
-						   .select{|p| p.role == role}
-						   .select{|p| p.move_to?(position,occupation(position))} 
+    	@board.pieces_in_play
+		   	  .select{|p| p.color == @whos_move.color}
+			  .select{|p| p.role == role}
+			  .select{|p| p.move_to?(position,occupation(position))} 
+    end
 
-		candidates.size > 0
+
+	def valid_move?(params)
+        candidate_moves(params).size > 0
 	end
 
 	def execute_move(params)
     	role = params[:role]
     	position = params[:position]
 
-    	candidates = @board.pieces_in_play
-						   .select{|p| p.color == @whos_move.color}
-						   .select{|p| p.role == role}
-						   .select{|p| p.move_to?(position,occupation(position))} 
-        
-        p candidates.size
+    	candidates = candidate_moves(params)
 		raise "ambiguous move" if candidates.size > 1
 
 		piece = candidates.first

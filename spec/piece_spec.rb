@@ -32,7 +32,8 @@ describe Piece do
 	context "when configured" do
 
 		before :each do
-			moves = [ [+1,0,3], [+2,+0,3] ]
+			moves = [ double(:kind_of? => Move, :direction=>[+1,0],:occupation=>3), 
+			          double(:kind_of? => Move,:direction=>[+2,0],:occupation=>3) ]
 
 			@position1 = double(:kind_of? => Piece)		  	
 			@position2 = double(:kind_of? => Piece, :paths => {[+1,+2] => @position1})	  	
@@ -66,8 +67,8 @@ describe Piece do
 			@piece.moves.size.should == 2
 		end
 
-		it "should have moves that are triples" do
-			@piece.moves.map{|m| m.size == 3}.inject(:&).should == true
+		it "should have moves that are Moves" do
+			@piece.moves.map{|m| m.kind_of? == Move}.inject(:&).should == true
 		end
 
 		it "should permit moving to position1 from position2" do
