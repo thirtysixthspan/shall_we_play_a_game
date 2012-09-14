@@ -75,6 +75,12 @@ describe Piece do
 			@piece.move_to?(@position1,1)	
 		end
 
+		it "should be able to place a piece" do
+			@piece.place(@position2)
+			@piece.position.should == @position2
+		end		
+
+
 	end
 
 end

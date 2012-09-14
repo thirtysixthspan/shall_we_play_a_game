@@ -10,6 +10,14 @@ class Piece
     		          }
     end
 
+    def place(position)
+    	@position = position unless !position
+    end
+
+    def remove()
+    	@position = nil
+    end
+
 	def initialize(params = {})
 		@name = params[:name] if params.include? :name
 		@position = params[:position] if params.include? :position
